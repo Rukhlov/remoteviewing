@@ -89,7 +89,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/download-artifact@v4
         with:
-          name: libvnc-${{ github.run_id }}
+          name: libvnc-${{ github.run_id }}-win7-x64
           path: ${{ github.workspace }}/libvnc/
       - uses: actions/setup-dotnet@v4
         with:
