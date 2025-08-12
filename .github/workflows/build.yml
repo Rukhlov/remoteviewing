@@ -13,6 +13,9 @@ jobs:
     strategy:
       matrix:
         include:
+        - arch: Win32
+          rid: win7-x86
+          triplet: x86-windows
         - arch: x64
           rid: win7-x64
           triplet: x64-windows
@@ -59,7 +62,7 @@ jobs:
         run: |
           New-Item ${{ github.workspace }}\libvnc\${{ matrix.rid }}\ -ItemType Directory -Force
           copy Release\*.* ${{ github.workspace }}\libvnc\${{ matrix.rid }}\
-        working-directory: build\${{ matrix.rid }}
+        working-directory: build
       - name: Build vnclogger
         run : |
           mkdir build
