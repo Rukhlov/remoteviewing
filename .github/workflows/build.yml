@@ -14,7 +14,7 @@ jobs:
     env:
       RID: osx-x64
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - uses: dotnet/nbgv@v0.4.0
@@ -74,7 +74,7 @@ jobs:
           triplet: x64-windows
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - uses: dotnet/nbgv@v0.4.0
@@ -86,12 +86,12 @@ jobs:
           git clone --branch LibVNCServer-${{ env.LIBVNC_VERSION }} --depth 1 https://github.com/LibVNC/libvncserver/
           git show
       - name: Cache vcpkg downloads
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: C:/vcpkg/downloads
           key: vcpkg_downloads | ${{ matrix.triplet }}
       - name: Cache vcpkg installed
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: C:/vcpkg/installed
           key: vcpkg_downloads | ${{ matrix.triplet }}
@@ -141,10 +141,10 @@ jobs:
       - run: |
           apt-get update
           DEBIAN_FRONTEND=noninteractive apt-get install -y libvncserver-dev gcc clang cmake libssl1.1 curl git
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - uses: actions/setup-dotnet@v2
+      - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '6.0.x'
       - uses: dotnet/nbgv@v0.4.0
@@ -173,10 +173,10 @@ jobs:
       - run: |
           apt-get update
           DEBIAN_FRONTEND=noninteractive apt-get install -y libvncserver-dev gcc-aarch64-linux-gnu cmake libssl1.1 curl git
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - uses: actions/setup-dotnet@v2
+      - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '6.0.x'
       - uses: dotnet/nbgv@v0.4.0
@@ -204,14 +204,14 @@ jobs:
     - native-linux-arm64
     runs-on: windows-2019
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - uses: actions/download-artifact@v3
         with:
           name: libvnc-${{ github.run_id }}
           path: ${{ github.workspace }}/libvnc/
-      - uses: actions/setup-dotnet@v2
+      - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '6.0.x'
       - name: Test
@@ -239,7 +239,7 @@ jobs:
       - run: |
           apt-get update
           DEBIAN_FRONTEND=noninteractive apt-get install -y libvncserver1 libturbojpeg libgdiplus
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - uses: actions/download-artifact@v3
@@ -255,10 +255,10 @@ jobs:
     needs: native-osx-x64
     runs-on: macOS-10.15
     steps:
-      - uses: actions/setup-dotnet@v2
+      - uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '6.0.x'
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - uses: actions/download-artifact@v3
