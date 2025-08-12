@@ -6,7 +6,7 @@ on:
   pull_request:
 
 env:
-  LIBVNC_VERSION: "0.9.13"
+  LIBVNC_VERSION: "0.9.15"
 
 jobs:
   native-windows:
@@ -82,7 +82,7 @@ jobs:
   build:
     needs:
     - native-windows
-    runs-on: windows-2022
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
         with:
