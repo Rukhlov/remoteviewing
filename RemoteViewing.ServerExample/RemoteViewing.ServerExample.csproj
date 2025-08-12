@@ -22,6 +22,7 @@
     <PackageReference Include="Quamotion.RemoteViewing.LibVnc.NativeBinaries" Version="1.1.197" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
     <ProjectReference Include="..\RemoteViewing.LibVnc\RemoteViewing.LibVnc.csproj" />
     <ProjectReference Include="..\RemoteViewing\RemoteViewing.csproj" />
     <ProjectReference Include="..\RemoteViewing.Windows.Forms\RemoteViewing.Windows.Forms.csproj" />
