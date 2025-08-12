@@ -35,6 +35,7 @@ include_directories(${ZLIB_INCLUDE_DIR})
 include_directories(${JPEG_INCLUDE_DIR})
 
 include_directories ("../libvncserver/")
+include_directories ("../libvncserver/include")
 include_directories ("../build/")
 
 CHECK_STRUCT_HAS_MEMBER("rfbClientPtr" clientFramebufferUpdateRequestHook rfb/rfb.h
