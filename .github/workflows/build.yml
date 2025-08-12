@@ -50,23 +50,23 @@ jobs:
           C:\vcpkg\vcpkg.exe install libjpeg-turbo:${{ matrix.triplet }}
       - name: Configure LibVNC
         run: |
-          mkdir build
-          cd build
+          mkdir build\${{ matrix.rid }}
+          cd build\${{ matrix.rid }}
           cmake -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg/scripts/buildsystems/vcpkg.cmake -DBUILD_SHARED_LIBS=ON -DWITH_OPENSSL=OFF -DWITH_GCRYPT=OFF -DWITH_GNUTLS=OFF -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/${{ matrix.rid }} ../libvncserver/ -A ${{ matrix.arch }} "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
       - name: Compile LibVNC
         run: |
           cmake --build . --target vncserver --config Release
           dir .
-        working-directory: build
+        working-directory: build\${{ matrix.rid }}
       - name: Install LibVNC
         run: |
           New-Item ${{ github.workspace }}\libvnc\${{ matrix.rid }}\ -ItemType Directory -Force
           copy Release\*.* ${{ github.workspace }}\libvnc\${{ matrix.rid }}\
-        working-directory: build
+        working-directory: build\${{ matrix.rid }}
       - name: Build vnclogger
         run : |
-          mkdir build
-          cd build
+          mkdir build\${{ matrix.rid }}
+          cd build\${{ matrix.rid }}
           cmake -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg/scripts/buildsystems/vcpkg.cmake -A ${{ matrix.arch }} "-DCMAKE_POLICY_VERSION_MINIMUM=3.5" ..
           cmake --build . --config Release
           New-Item ${{ github.workspace }}\libvnc\${{ matrix.rid }} -ItemType Directory -Force
