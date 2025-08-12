@@ -105,7 +105,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg/scripts/buildsystems/vcpkg.cmake -DBUILD_SHARED_LIBS=ON -DWITH_OPENSSL=OFF -DWITH_GCRYPT=OFF -DWITH_GNUTLS=OFF -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/${{ matrix.rid }} ../libvncserver/ -A ${{ matrix.arch }}
+          cmake -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg/scripts/buildsystems/vcpkg.cmake -DBUILD_SHARED_LIBS=ON -DWITH_OPENSSL=OFF -DWITH_GCRYPT=OFF -DWITH_GNUTLS=OFF -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/${{ matrix.rid }} ../libvncserver/ -A ${{ matrix.arch }} "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
       - name: Compile LibVNC
         run: |
           cmake --build . --target vncserver --config Release
@@ -120,7 +120,7 @@ jobs:
         run : |
           mkdir build
           cd build
-          cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg/scripts/buildsystems/vcpkg.cmake -A ${{ matrix.arch }} ..
+          cmake -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg/scripts/buildsystems/vcpkg.cmake -A ${{ matrix.arch }} "-DCMAKE_POLICY_VERSION_MINIMUM=3.5" ..
           cmake --build . --config Release
           New-Item ${{ github.workspace }}\libvnc\${{ matrix.rid }} -ItemType Directory -Force
           copy Release\*.* ${{ github.workspace }}\libvnc\${{ matrix.rid }}
