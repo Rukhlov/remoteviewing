@@ -6,7 +6,7 @@ on:
   pull_request:
 
 env:
-  LIBVNC_VERSION: "0.9.15"
+  LIBVNC_VERSION: "0.9.14"
 
 jobs:
   native-windows:
